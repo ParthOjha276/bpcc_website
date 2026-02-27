@@ -2,27 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+/* =========================
+   Base behavior
+   ========================= */
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-serif tracking-tight text-bpcc-navy-DEFAULT;
-  }
-
-  p {
-    @apply font-sans text-bpcc-grey leading-relaxed;
-  }
-
-  body {
-    @apply bg-bpcc-cream;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
-::selection {
-  background-color: #D97706;
-  color: white;
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: none;
+  /* IE + Edge */
+  scrollbar-width: none;
+
+
+}
+
+/* Hide scrollbar but keep scroll */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================
+   Accessibility
+   ========================= */
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
