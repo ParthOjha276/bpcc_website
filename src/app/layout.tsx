@@ -1,36 +1,35 @@
-import "./globals.css";
-import Navbar from "@/components/Navbar";
+import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
+import "./globals.css";
 
+// 1. Configure the Serif Font (Headings)
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-playfair",
+  variable: "--font-serif",
+  display: "swap",
 });
 
+// 2. Configure the Sans-Serif Font (Body text)
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
+  variable: "--font-sans",
+  display: "swap",
 });
 
-export const metadata = {
-  title: "BITS Pilani Consulting Club",
-  description: "Official Consulting Club of BITS Pilani",
+export const metadata: Metadata = {
+  title: "BITS Pilani Consulting Club | Strategize. Solve. Succeed.",
+  description: "The premier student consulting body of BITS Pilani.",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html
-      lang="en"
-      className={`dark ${playfair.variable} ${inter.variable}`}
-    >
-      <body className="bg-neutral-100 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased font-sans">
-        <Navbar />
+    <html lang="en">
+      {/* 3. Inject font variables into the body */}
+      <body className={`${playfair.variable} ${inter.variable} antialiased bg-bpcc-cream text-slate-900`}>
         {children}
       </body>
     </html>
